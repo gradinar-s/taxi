@@ -1,24 +1,30 @@
 import React, { useState } from "react";
+import { InvitationCodePage } from "./entities/client/pages/InvitationCodePage";
+import { ServiceRegistrationPage } from "./entities/service/pages/ServiceRegistrationPage";
 import "./App.css";
 
-function App() {
-  const [isEnteringCode, setEnteginCode] = useState(false);
+const App = () => {
+  const [tab, setTab] = useState("client");
 
   return (
-    <div className="wrapper">
-      <h1 className="title">Служба такси</h1>
+    <div style={{ margin: "20px" }}>
+      <div>Cлужба такси</div>
 
-      {isEnteringCode && (
-        <div className="input">
-          <input />
-          <button onClick={() => setEnteginCode(false)}>x</button>
-        </div>
-      )}
-      {!isEnteringCode && (
-        <button onClick={() => setEnteginCode(true)}>Ввести код приглашения</button>
-      )}
+      {/* Temp block */}
+      <h1>Кто ты?</h1>
+      <ul>
+        <li onClick={() => setTab("client")}>Я клиент</li>
+        <li onClick={() => setTab("driver")}>Я водитель</li>
+        <li onClick={() => setTab("service-registration")}>Зарегистрировать службу такси</li>
+      </ul>
+
+      <div style={{ border: "1px solid gray", padding: "10px", borderRadius: "5px" }}>
+        {tab === "client" && <InvitationCodePage />}
+        {tab === "driver" && <div>появится позже</div>}
+        {tab === "service-registration" && <ServiceRegistrationPage />}
+      </div>
     </div>
   );
-}
+};
 
 export default App;
