@@ -1,3 +1,7 @@
+body {
+  background-color: rgb(0, 103, 123);
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
@@ -7,6 +11,7 @@
 }
 
 .title {
+  color: #fff;
   margin-bottom: 20px;
 }
 
